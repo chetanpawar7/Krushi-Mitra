@@ -10,7 +10,7 @@ Step 3: git pull origin develop or master <br>
 
 Step 4: Install Node form https://nodejs.org/en/ <br>
 
-Step 5: npm install <br>
+Step 5: npm install  (if any error to install use this ---> npm install --force) <br>
 
 Step 6: npm install -g json-server (Install JSON server) <br>
 
