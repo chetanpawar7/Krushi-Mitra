@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-3">
+  
+    </div>
+    <div class="col" >
+      <p class="lead">My Orders</p>
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a>Farmer</a></li>
+            <li class="breadcrumb-item"><a>Orders</a></li>
+        </ol>
+    </nav>
+      <table class="table table-bordered table-secondary" >
+        <thead>
+          <tr>
+            <th scope="col">orderId</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">buying rate</th>
+            <th scope="col">contact</th>
+            <th scope="col">Date</th>
+            <th scope="col">Negotiated Price</th>
+            <th scope="col">Negotiated Quantity</th>
+            <th scope="col">merchant name</th>
+            <th scope="col">Status</th>
+            <!-- <th scope="col">action</th> -->
+          </tr>
+        </thead>
+        <tbody *ngFor="let order of orders">
+          <tr *ngIf="order.requestedby === this.loggedinname || order.approvedby === loggedinname">
+            <th scope="row">{{order.id}}</th>
+            <td>{{order.product.name}}</td>
+            <td>{{order.product.productDesc}}</td>
+            <td>{{order.product.dp}}</td>            
+            <td>{{order.product.mobNumber}}</td>
+            <td>{{order.dateTime}}</td>
+            <td>{{order.negotiation_price}}</td>
+            <td>{{order.negotiation_quantity}}</td>
+            <td *ngIf="order.product.role === 'farmer' ">{{order.requestedby}} </td>
+            <td *ngIf="order.product.role === 'merchant' ">{{order.approvedby}} </td>
+            <td>{{order.status}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-3">
+  
+    </div>
+    <div class="col" >
+      <p class="lead">My Requested Orders</p>
+
+      <table class="table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col">orderId</th>
+            <th scope="col">Name</th>
+            <th scope="col">Product Description</th>
+            <th scope="col">buying rate</th>
+            <th scope="col">contact</th>
+            <th scope="col">time</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of myorders">
+            <th scope="row">{{order.id}}</th>
+            <td>{{order.product.name}}</td>
+            <td>{{order.product.productDesc}}</td>
+            <td>{{order.product.dp}}</td>
+            <td>{{order.contact}}</td>
+            <td>{{order.dateTime}}</td>
+            <td>{{order.status}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </div> -->

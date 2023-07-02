@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>Farmer</a></li>
+                <li class="breadcrumb-item"><a routerLink="/farmer/seeds-pesticides">Krushi Kendra</a></li>
+                <!-- <li class="breadcrumb-item"><a routerLink="/farmer/cart">Cart</a></li> -->
+                <li class="breadcrumb-item"><a routerLink="/farmer/krishi">Order History</a></li>
+            </ol>
+        </nav>
+        <h4 class="display-6 justify-content-center">Krushi Kendra Page</h4>
+        <div class="row">
+            <div class="col-sm-4 product" *ngFor="let product of all_products;">
+                <div class="card shadow">
+                    <img src="{{product.uploadPhoto}}" height="300px" class="card-img-top" alt="{{product.name}}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{product.name}}</h4>
+                        <p><span class="float-left"><strong>MRP</strong>: <del>{{product.mrp}}</del></span> <span
+                                class="float-right"><strong>DP</strong>:
+                                {{product.dp}}</span></p>
+                        <br>
+                        <p class="card-text product-desc">Quantity :- {{product.productDesc}}</p>
+                        <p>Added by:- {{product.addedBy}}</p>
+                        <!-- <a class="btn btn-primary text-light float-left" (click)="addToCart(product.id)">Add to Cart</a> -->
+                        <a class="btn btn-primary text-light float-right" (click)="buyProduct(product.id)">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,230 @@
+{
+  "user": [
+    {
+      "age": 23,
+      "agreetc": true,
+      "dob": "1999-01-10",
+      "email": "roshan.sonone@gmail.com",
+      "gender": "Male",
+      "address": {
+        "id": 0,
+        "addLine1": "Sambhaji Nagar",
+        "addLine2": "Sambhaji Nagar",
+        "city": "Sambhaji Nagar",
+        "state": "Maharashtra",
+        "zipCode": "431003"
+      },
+      "mobNumber": "9876543210",
+      "name": "Roshan Sonone",
+      "password": "12345678",
+      "role": "farmer",
+      "id": 1
+    },
+    {
+      "age": 23,
+      "agreetc": true,
+      "dob": "1999-08-31",
+      "email": "chetan.pawar@gmail.com",
+      "gender": "Male",
+      "address": {
+        "id": 0,
+        "addLine1": "Sambhaji Nagar",
+        "addLine2": "Sambhaji Nagar",
+        "city": "Sambhaji Nagar",
+        "state": "Maharashtra",
+        "zipCode": "431003"
+      },
+      "mobNumber": "9876543210",
+      "name": "Chetan Pawar",
+      "password": "12345678",
+      "role": "merchant",
+      "id": 2
+    },
+    {
+      "age": 25,
+      "agreetc": true,
+      "dob": "1997-05-10",
+      "email": "shopowner@krushi.com",
+      "gender": "Male",
+      "address": {
+        "id": 0,
+        "addLine1": "N-4 Garkheda,",
+        "addLine2": null,
+        "city": "Chhatrapati Sambhaji Nagar",
+        "state": "Maharashtra",
+        "zipCode": "431003"
+      },
+      "mobNumber": "9028066793",
+      "name": "Shopowner",
+      "password": "12345678",
+      "role": "shopowner",
+      "id": 3
+    },
+    {
+      "age": 23,
+      "agreetc": true,
+      "dob": "1999-01-10",
+      "email": "admin@gmail.com",
+      "gender": "Male",
+      "address": {
+        "id": 0,
+        "addLine1": "Sambhaji Nagar",
+        "addLine2": "Sambhaji Nagar",
+        "city": "Sambhaji Nagar",
+        "state": "Maharashtra",
+        "zipCode": "431003"
+      },
+      "mobNumber": "9876543210",
+      "name": "Admin",
+      "password": "12345678",
+      "role": "admin",
+      "id": 4
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Cotton",
+      "uploadPhoto": "data:image/jpeg;base64,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",
+      "productDesc": "10Kg",
+      "mrp": "10000",
+      "dp": "9000",
+      "status": "active",
+      "addedBy": "Roshan Sonone",
+      "user_session_id": "1",
+      "role": "farmer",
+      "mobNumber": "9876543210",
+      "city": "Sambhaji Nagar"
+    },
+    {
+      "id": 3,
+      "name": "Sunflower",
+      "uploadPhoto": "https://images.pexels.com/photos/33044/sunflower-sun-summer-yellow.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "productDesc": "10Kg",
+      "mrp": "9000",
+      "dp": "5000",
+      "status": "active",
+      "addedBy": "Chetan Pawar",
+      "user_session_id": "2",
+      "role": "merchant",
+      "mobNumber": "9876543210",
+      "city": "Sambhaji Nagar"
+    }
+  ],
+  "orders": [
+    {
+      "requestedby": "Roshan Sonone",
+      "approvedby": "Chetan Pawar",
+      "orderid": "",
+      "userId": 1,
+      "product": {
+        "id": "",
+        "name": "Onion",
+        "uploadPhoto": "https://images.pexels.com/photos/4197444/pexels-photo-4197444.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "productDesc": "100Kg",
+        "mrp": "500",
+        "dp": "400",
+        "status": "Payment Pending",
+        "addedBy": "Chetan Pawar",
+        "user_session_id": "2",
+        "role": "merchant",
+        "mobNumber": "9876543210",
+        "city": "Sambhaji Nagar"
+      },
+      "deliveryAddress": {
+        "id": 0,
+        "addLine1": "Sambhaji Nagar",
+        "addLine2": "Sambhaji Nagar",
+        "city": "Sambhaji Nagar",
+        "state": "Maharashtra",
+        "zipCode": 431003
+      },
+      "negotiation_price": "",
+      "negotiation_quantity": "",
+      "dateTime": "23/6/2023",
+      "status": "Ordered",
+      "id": 1
+    },
+    {
+      "requestedby": "Chetan Pawar",
+      "approvedby": "Roshan Sonone",
+      "orderid": 1,
+      "userId": 2,
+      "product": {
+        "id": 1,
+        "name": "Cotton",
+        "uploadPhoto": "data:image/jpeg;base64,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",
+        "productDesc": "10Kg",
+        "mrp": "10000",
+        "dp": "9000",
+        "status": "Payment Pending",
+        "addedBy": "Roshan Sonone",
+        "user_session_id": "1",
+        "role": "farmer",
+        "mobNumber": "9876543210",
+        "city": "Sambhaji Nagar"
+      },
+      "deliveryAddress": {
+        "id": 0,
+        "addLine1": "Sambhaji Nagar",
+        "addLine2": "Sambhaji Nagar",
+        "city": "Sambhaji Nagar",
+        "state": "Maharashtra",
+        "zipCode": 431003
+      },
+      "negotiation_price": "99",
+      "negotiation_quantity": "1",
+      "dateTime": "23/06/2023",
+      "status": "Ordered",
+      "id": 2
+    }
+  ],
+  "scheme": [
+    {
+      "id": 1,
+      "name": "scheme1",
+      "total_benifits": "100000",
+      "date": "1998-01-10",
+      "schemeFor": "farmer",
+      "links": "https://www.flipkart.com/?affid=affveve&affExtParam1=bcf91fde282155adc03aed0b3fff7ab0&affExtParam2=60827"
+    }
+  ],
+  "feedbacks": [
+    {
+      "name": "qdawsefg",
+      "email": "awdsefzr",
+      "subject": "qasdefzrx",
+      "message": "qawdsefzdrft",
+      "id": 1
+    },
+    {
+      "name": "nooo",
+      "email": "qwerty",
+      "subject": "asdf",
+      "message": "xcvbnm",
+      "id": 2
+    },
+    {
+      "name": "erferf",
+      "email": "rf4rf",
+      "subject": "4rf453g",
+      "message": "4rg45g",
+      "id": 3
+    },
+    {
+      "name": "2r3fg45g",
+      "email": "245g54g",
+      "subject": "245g45g",
+      "message": "35g5g45g4g",
+      "id": 4
+    },
+    {
+      "name": "3rf4r5fg",
+      "email": "45g45g",
+      "subject": "45g",
+      "message": "45g",
+      "id": 5
+    }
+  ],
+  "declineOrders": []
+}

@@ -1,0 +1,129 @@
+<div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col mt-2">
+        <div class="container">
+            Update Status
+
+
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="form-group row">
+                    <div class="form-group">
+                        <label for="productName">Product Name</label>
+                        <input type="text" class="form-control" formControlName="name"
+                            [ngClass]="{'is-invalid':rf.name.errors}" />
+                        <div *ngIf=" rf.name.errors" class="invalid-feedback">
+                            <div *ngIf="rf.name.errors.required">Name is required</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="sel1">Status</label>
+                        <select class="form-control" formControlName="status" [(ngModel)]="status" name="status">
+                            <option value="">---</option>
+                            <option value="requested">Requested</option>
+                            <option value="accept">Accept</option>
+                            <option value="decline">Decline</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" >Update</button>
+            </form>
+
+            <p class="lead">orders</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">orderId</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Product Description</th>
+                        <th scope="col">buying rate</th>
+                        <th scope="col">contact</th>
+                        <th scope="col">time</th>
+                        <th scope="col">Status</th>
+                        <!-- <th scope="col">action</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>{{Order.product.name}}</td>
+                        <td>{{Order.product.productDesc}}</td>
+                        <td>{{Order.product.dp}}</td>
+                        <td>{{Order.contact}}</td>
+                        <td>{{Order.dateTime}}</td>
+                        <td>{{Order.status}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="btn btn-success" type="button">
+                Accept
+            </button>
+            <button class="btn btn-danger" type="button" (click)="deleteProduct(id)">
+                Decline
+            </button>
+        </div>
+
+        <!-- <form [formGroup]="addEditProductForm">
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" class="form-control" formControlName="name"
+                    [ngClass]="{'is-invalid': rf.name.errors}" />
+                <div *ngIf=" rf.name.errors" class="invalid-feedback">
+                    <div *ngIf="rf.name.errors.required">Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productImage">Product Image URL</label>
+                <input type="url" class="form-control" formControlName="uploadPhoto"
+                    [ngClass]="{'is-invalid': rf.uploadPhoto.errors}">
+                <div *ngIf=" rf.uploadPhoto.errors" class="invalid-feedback">
+                    <div *ngIf="rf.uploadPhoto.errors.required">Please upload file</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productDescription">Description</label>
+                <textarea class="form-control" rows="3" formControlName="productDesc"
+                    [ngClass]="{'is-invalid': rf.productDesc.errors}"></textarea>
+                <div *ngIf="rf.productDesc.errors" class="invalid-feedback">
+                    <div *ngIf="rf.productDesc.errors.required">Write something about product
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productMRP">MRP</label>
+                <input type="text" class="form-control" formControlName="mrp"
+                    [ngClass]="{'is-invalid': rf.mrp.errors}" />
+                <div *ngIf="rf.mrp.errors" class="invalid-feedback">
+                    <div *ngIf="rf.mrp.errors.required">MRP is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productDP">DP</label>
+                <input type="text" class="form-control" formControlName="dp"
+                    [ngClass]="{'is-invalid': rf.dp.errors}" />
+                <div *ngIf=" rf.dp.errors" class="invalid-feedback">
+                    <div *ngIf="rf.dp.errors.required">DP is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productStatus">Status</label>
+                <select class="form-control" formControlName="status"
+                    [ngClass]="{'is-invalid': rf.status.errors}">
+                    <option value="draft">Draft</option>
+                    <option value="publish">Publish</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+                <div *ngIf=" rf.status.errors" class="invalid-feedback">
+                    <div *ngIf="rf.status.errors.required">Select one option</div>
+                </div>
+            </div>
+            <div class="form-group">
+                
+                <button class="btn btn-primary" (click)="updateProduct()"
+                    >Update</button>
+            </div>
+        </form> -->
+    </div>
+</div>

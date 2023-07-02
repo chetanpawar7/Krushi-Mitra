@@ -1,0 +1,243 @@
+<nav class="navbar header navbar-expand-lg navbar-dark sticky-top">
+  <!-- [ngClass]="{'bg-success': user_role === 'merchant', 'bg-primary' : user_role === 'farmer', 'bg-info' : user_role === 'admin' }" -->
+
+  <!-- user_role == 'merchant' ? 'bg-primary' : 'bg-success' -->
+  <a class="navbar-brand text-light"  routerLink="/home">{{'proj_name' | translate}}</a>
+  <span
+    [ngClass]="user_role == 'farmer' ? 'badge bg-info text-light' : 'badge bg-success text-light'">{{user_role}}</span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{language}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" (click)="switchLanguage('en')">{{'header.lang_en' | translate}}</a>
+          <a class="dropdown-item" (click)="switchLanguage('hn')">{{'header.lang_hn' | translate}}</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf="user_role == 'farmer'" routerLink="/farmer-dashboard">{{'header.home' |
+          translate}}</a>
+        <a class="nav-link" *ngIf="user_role == 'merchant'" routerLink="/merchant/product">{{'header.home' |
+          translate}}</a>
+          <a class="nav-link" *ngIf="user_role == 'shopowner'" routerLink="/shopowner">{{'header.home' |
+            translate}}</a>
+        <a class="nav-link" *ngIf="user_role == 'admin'" routerLink="/admin-dashboard">{{'header.home' | translate}}</a>
+      </li>
+      <!-- <li class="nav-item">
+                <a class="nav-link" href="#">{{'header.service' | translate}}</a>
+            </li> -->
+
+      <!-- <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+          {{'header.about_us' | translate}}
+        </a>
+      </li> -->
+
+      <!-- <li class="nav-item" *ngIf="user_role == 'merchant'">
+        <a class="nav-link" routerLink="/merchant/merchant-orders">{{'header.order' | translate}}</a>
+      </li>
+      <li class="nav-item" *ngIf="user_role == 'admin'">
+        <a class="nav-link" routerLink="/all-order">{{'header.order' | translate}}</a>
+      </li>
+      <li class="nav-item" *ngIf="user_role =='farmer'">
+        <a class="nav-link" routerLink="/farmer/product">My{{'header.product' | translate}}</a>
+      </li>
+      <li class="nav-item" *ngIf="user_role == 'admin'">
+        <a class="nav-link" routerLink="/admin/product">{{'header.product' | translate}}</a>
+      </li>
+      <li class="nav-item" *ngIf="user_role == 'admin'">
+        <a class="nav-link" routerLink="/admin/user">{{'header.user' | translate}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact-us">{{'header.contact_us' | translate}}</a> -->
+      <!-- </li> -->
+      <!-- <li class="nav-item " *ngIf="user_role == 'merchant'">
+        <a class="nav-link">Farmers List</a>
+      </li>
+      <li class="nav-item " *ngIf="user_role == 'merchant'">
+        <a class="nav-link">ChatBot</a>
+      </li> -->
+
+    </ul>
+    <li *ngIf="logged_in && user_role == 'merchant' || logged_in && user_role 'farmer' " class="text-light badge bg-secondary">
+      {{name}}
+    </li>
+    <!-- <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="{{'header.search' | translate}}" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{'header.search' | translate}}</button>
+        </form> -->
+    <ul class="navbar-nav mr-5" *ngIf="!logged_in">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/sign-in">{{'header.signin' | translate}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/sign-up">{{'header.signup' | translate}}</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav" *ngIf="logged_in">
+      <li class="nav-item">
+        <a class="nav-link sim-pointer" routerLink="/my-profile">{{'header.my_profile' | translate}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link sim-pointer" (click)="logOut()">{{'header.signout' | translate}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<aside id="sidebar" class="sidebar" *ngIf="logged_in && router.url !== '/home' ">
+  <ul class="sidebar-nav" id="sidebar-nav">
+    
+    <li class="nav-item">
+      <a class="nav-link">
+        <i class="bi bi-grid"></i>
+        <span *ngIf="user_role == 'farmer'" routerLink="/farmer/addcrop">Crop Registration</span>
+        <span *ngIf="user_role == 'merchant'"  routerLink="/merchant/addcrop">Crop Registration</span>
+      </a>
+    </li>
+    <li class="nav-item"  *ngIf="user_role === 'farmer' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-menu-button-wide"></i>
+        <span routerLink="/farmer/product">My Crops</span>
+      </a>
+    </li>
+
+    <li class="nav-item"  *ngIf="user_role === 'merchant' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-menu-button-wide"></i>
+        <span routerLink="/merchant/product">My Crops</span>
+      </a>
+    </li>
+
+
+ 
+
+    <li class="nav-item" *ngIf="user_role == 'farmer'">
+      <a class="nav-link collapsed">
+        <i class="bi bi-journal-text"></i>
+        <span routerLink="/farmer/merchant-selling">Merchant List</span>
+        <i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf="user_role == 'merchant'">
+      <a class="nav-link collapsed">
+        <i class="bi bi-journal-text"></i>
+        <span routerLink="/merchant/farmer-list">Farmer List</span>
+        <i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf="user_role == 'farmer' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-layout-text-window-reverse"></i>
+        <span routerLink="/farmer/purchaserequestf">Purchasing Requests</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf="user_role == 'merchant' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-layout-text-window-reverse"></i>
+        <span routerLink="/merchant/purchaserequestm">Purchasing Requests</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf="user_role == 'farmer'">
+      <a class="nav-link collapsed">
+        <i class="bi bi-bar-chart"></i>
+        <span  routerLink="/farmer/seeds-pesticides">Krushi Kendra</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf="user_role == 'merchant' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span routerLink="/merchant/govSchemes">Government Schemes</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf="user_role == 'farmer'">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span routerLink="/farmer/govSchemes">Government Schemes</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+
+
+    <!-- <li class="nav-item" *ngIf="user_role == 'shopowner' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span data-toggle="modal" data-target="#addEditProductModal" >Add Products</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li> -->
+    <li class="nav-item" *ngIf="user_role == 'shopowner' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span routerLink="/shopowner">Products</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="user_role == 'shopowner' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span routerLink="/shopowner/orders">Orders</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+
+    <!-- <li class="nav-item" *ngIf="user_role == 'admin' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span data-toggle="modal" data-target="#addEditProductModal" >Add Scheme</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li> -->
+    <li class="nav-item" *ngIf="user_role == 'admin' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span routerLink="/admin/govSchemes">Gov. Schemes</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="user_role == 'admin' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span routerLink="/admin/user">User Management</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="user_role == 'admin' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span routerLink="/admin/product">Product Management</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf="user_role == 'admin' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span routerLink="/admin/orders">Order Management</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf="user_role == 'admin' ">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span routerLink="/admin/feedbacks">Feedbacks</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed">
+        <i class="bi bi-gem"></i>
+        <span *ngIf="user_role == 'farmer' "  routerLink="/farmer/orders">Crop Orders</span><i class="bi bi-chevron-down ms-auto"></i>
+        <span *ngIf="user_role == 'merchant' " routerLink="/merchant/merchant-orders">My Orders</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+    </li>
+  </ul>
+
+</aside>

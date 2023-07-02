@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-3">
+  
+    </div>
+    <div class="col mt-3" >
+      <p class="lead">Krishi Kendra Order History</p>
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a>Farmer</a></li>
+            <li class="breadcrumb-item"><a>Orders</a></li>
+        </ol>
+    </nav>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">orderId</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Buying rate</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Date</th>
+            <th>Krushikendra name</th>
+            <th scope="col">Status</th>
+            <!-- <th scope="col">action</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <th scope="row">{{order.id}}</th>
+            <td>{{order.product.name}}</td>
+            <td>{{order.product.productDesc}}</td>
+            <td>{{order.product.dp}}</td>
+            <td>{{order.contact}}</td>
+            <td>{{order.dateTime}}</td>
+            <td>{{order.product.addedBy}}</td>
+            <td>{{order.status}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </div>

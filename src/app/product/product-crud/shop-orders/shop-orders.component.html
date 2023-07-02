@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-3">
+  </div>
+  <div class="col">
+    <p class="lead">orders</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">orderId</th>
+          <th scope="col">Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">buying rate</th>
+          <th scope="col">contact</th>
+          <th scope="col">time</th>
+          <th scope="col">Farmer Name</th>
+          <th scope="col">Status</th>
+          <!-- <th scope="col">action</th> -->
+        </tr>
+      </thead>
+      <tbody *ngFor="let order of orders" >
+        <tr >
+            <th scope="row">{{order.id}}</th>
+            <td>{{order.product.name}}</td>
+            <td>{{order.product.productDesc}}</td>
+            <td>{{order.product.dp}}</td>
+            <td>{{order.contact}}</td>
+            <td>{{order.dateTime}}</td>
+            <td>{{order.requestedby}}</td>
+            <td>{{order.status}}</td>
+            <!-- <td>{{order.product.addedBy}}</td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

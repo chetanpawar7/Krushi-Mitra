@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col mt-5">
+
+<h4>Feedbacks</h4>
+        <table class="table table-hover border mt-3">
+            <thead>
+                <tr class="text-muted">
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of feedbacks;">
+                    <td>{{i.id}} </td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.subject}}</td>
+                    <td>{{i.message}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

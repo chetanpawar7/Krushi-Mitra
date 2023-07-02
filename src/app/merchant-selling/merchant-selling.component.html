@@ -1,0 +1,70 @@
+<div class="row mt-5 container-fluid">
+    <div class="col-3">
+
+    </div>
+    <div class="col">
+        <p class="lead">Merchant List</p>
+        <p>List of all Merchants</p> Selling request by crop registration by merchant
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+          <th scope="col">Name of Merchant</th>
+          <th scope="col">Required crop</th>
+          <th scope="col">Buying rate</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Contact</th>
+          <th scope="col">Address</th>
+          <th scope="col">Photo</th>
+          <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let merchant of all_merchants; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{merchant.addedBy}}</td>
+            <td>{{merchant.name}}</td>
+            <td>{{merchant.dp}}</td>
+            <td>{{merchant.productDesc}}</td>
+            <td>{{merchant.mobNumber}}</td>
+            <td>{{merchant.city}}</td>
+            <td> <img src="{{merchant.uploadPhoto}}" class="img-thumbnail" alt="" style="height : 90px"></td>
+            <!-- <td>
+              <span class="sim-pointer" (click)="view(product.id)" data-toggle="modal"
+                data-target="#addEditProductModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+            </td> -->
+
+
+            <!-- <td> <a class="btn btn-primary text-light float-right" data-toggle="modal"
+              data-target="#addEditProductModal">Negotiate</a></td> -->
+            <td> <a class="btn btn-primary text-light float-right" (click)="buyProduct(merchant.id)">Proceed</a></td>
+  
+  
+            <div class="modal fade" id="addEditProductModal" tabindex="-1" role="dialog" aria-labelledby="addEditUserTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title"></h5>
+                 
+                </div>
+                <div class="modal-body">
+  
+                 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" (click)="buyProduct1(merchant.id)" data-dismiss="modal"
+                  class="btn btn-primary">Proceed</button>
+                </div>
+              
+              </div>
+            </div>
+          </div>
+  
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+</div>

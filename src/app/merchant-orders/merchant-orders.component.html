@@ -1,0 +1,176 @@
+<div class="row">
+  <div class="col-3">
+
+  </div>
+  <div class="col-9 mt-3">
+    <p class="lead">orders</p>
+    <table class="table border">
+      <thead>
+        <tr>
+          <th scope="col">orderId</th>
+          <th scope="col">Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">buying rate</th>
+          <th scope="col">contact</th>
+          <th scope="col">date</th>
+          <th scope="col">Negotiated Price</th>
+          <th scope="col">Negotiated Quantity</th>
+          <th scope="col">Farmer Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let order of orders; let i = index ">
+        <tr *ngIf="order.requestedby === this.loggedinname || order.approvedby === loggedinname">
+          <th scope="row">{{order.id}}</th>
+          <td>{{order.product.name}}</td>
+          <td>{{order.product.productDesc}}</td>
+          <td>{{order.product.dp}}</td>
+          <td>{{order.product.mobNumber}}</td>
+          <td>{{order.dateTime}}</td>
+          <td>{{order.negotiation_price}}</td>
+          <td>{{order.negotiation_quantity}}</td>
+          <td *ngIf="order.product.role === 'merchant' ">{{order.requestedby}} </td>
+          <td *ngIf="order.product.role === 'farmer' ">{{order.approvedby}} </td>
+          <td> {{order.status}} </td>
+          <td>
+            <button [disabled]="order.status === 'Requested' || order.status === 'Ordered' " type="button" class="btn btn-success" (click)="paynow()" (click)="changeStatus(order.id)">Pay</button>
+            
+            <!-- (click)="editProductPopup(order.id)" -->
+            <!-- <span class="sim-pointer" data-toggle="modal" data-target="#addEditProductModal"
+            (click)="editProductPopup(order.id)"><i class="fa fa-pencil-square-o"
+                aria-hidden="true"></i></span> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Modal for add and edit user -->
+<div class="modal fade" id="addEditProductModal" tabindex="-1" role="dialog" aria-labelledby="addEditUserTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">{{popup_header}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <form [formGroup]="addEditProductForm1">
+                        <!-- <div class="form-group">
+                            <label for="productName">name</label>
+                            <input type="text" class="form-control" readonly formControlName="name"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">Product Image URL</label>
+                            <input type="url" class="form-control" readonly formControlName="uploadPhoto">
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">Product Desc</label>
+                            <input type="url" class="form-control" readonly formControlName="productDesc">
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">mrp</label>
+                            <input type="text" class="form-control" readonly formControlName="mrp">
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">dp</label>
+                            <input type="text" class="form-control" readonly formControlName="dp">
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">addedBy</label>
+                            <input type="text" class="form-control" readonly formControlName="addedBy">
+                        </div>
+                        <div class="form-group">
+                            <label for="productName">Contact</label>
+                            <input type="text" class="form-control" readonly formControlName="contact"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="productName">addLine1</label>
+                            <input type="text" class="form-control" readonly formControlName="addLine1"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="productName">addLine2</label>
+                            <input type="text" class="form-control" readonly formControlName="addLine2"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="productName">city</label>
+                            <input type="text" class="form-control" readonly formControlName="city"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="productName">state</label>
+                            <input type="text" class="form-control"readonly formControlName="state"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="productName">Zip</label>
+                            <input type="text" class="form-control" readonly formControlName="zipCode"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">date</label>
+                            <input type="text" class="form-control" readonly formControlName="dateTime">
+                        </div> -->
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select class="form-control" formControlName="status">
+                                <!-- <option value="Requested">Requested</option> -->
+                                <option value="Payment Pending">Approve</option>
+                                <option value="Ordered">Accept Order</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" (click)="changeStatus()">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+<!-- 
+<div class="row">
+  <div class="col-3">
+
+  </div>
+  <div class="col">
+
+    <p class="display-4"></p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">orderId</th>
+          <th scope="col">Name</th>
+          <th scope="col">Product Desc</th>
+          <th scope="col">Price</th>
+          <th scope="col">contact</th>
+          <th scope="col">time</th>
+          <th scope="col">Added By</th>
+          <th scope="col">Status</th>
+          <th scope="col">action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <th scope="row">{{order.id}}</th>
+          <td>{{order.product.name}}</td>
+          <td>{{order.product.productDesc}}</td>
+          <td>{{order.product.dp}}</td>
+          <td>{{order.contact}}</td>
+          <td>{{order.dateTime}}</td>
+          <td>{{order.product.addedBy}},  {{order.product.role}}</td>
+          <td>{{order.status}}</td>
+          <td > 
+            <button [disabled]="order.status === 'requested' " type="button" routerLink="/payment-gateway" class="btn btn-success">Pay Now</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
